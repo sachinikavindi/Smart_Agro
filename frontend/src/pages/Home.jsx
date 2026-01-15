@@ -20,7 +20,7 @@ function Home() {
           <Link to="/" className="text-yellow-400 hover:text-white transition-colors font-medium">HOME</Link>
           <Link to="/mar-prices" className="text-white hover:text-yellow-400 transition-colors font-medium">MARKET PRICES</Link>
           <Link to="/ai-prediction" className="text-white hover:text-yellow-400 transition-colors font-medium">AI PREDICTION</Link>
-          <a href="#" className="text-white hover:text-yellow-400 transition-colors font-medium">PRODUCT</a>
+          <Link to="/about" className="text-white hover:text-yellow-400 transition-colors font-medium">ABOUT</Link>
         </nav>
       </header>
 
@@ -102,7 +102,7 @@ function Home() {
               }}
             />
             <div className="absolute bottom-0 left-0 right-0 p-6">
-              <h3 className="text-gray-900 text-xl font-bold text-center drop-shadow-lg">Crop Recommendation</h3>
+              <h3 className="text-white text-xl font-bold text-center drop-shadow-lg">Crop Recommendation</h3>
             </div>
           </div>
 

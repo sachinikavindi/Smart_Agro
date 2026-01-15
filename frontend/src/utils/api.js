@@ -81,3 +81,53 @@ export async function testConnection() {
   return get('/hello')
 }
 
+/**
+ * Get market prices from Excel data
+ * @param {string} date - Optional date filter (YYYY-MM-DD)
+ * @param {string} vegetable - Optional vegetable filter
+ */
+export async function getMarketPrices(date = null, vegetable = null) {
+  const params = new URLSearchParams()
+  if (date) params.append('date', date)
+  if (vegetable) params.append('vegetable', vegetable)
+  
+  const queryString = params.toString()
+  const endpoint = `/market-prices${queryString ? `?${queryString}` : ''}`
+  return get(endpoint)
+}
+
+/**
+ * Get monthly price trend for a vegetable
+ * @param {string} month - Month (YYYY-MM)
+ * @param {string} vegetable - Vegetable name
+ */
+export async function getPriceTrend(month, vegetable) {
+  const params = new URLSearchParams()
+  params.append('month', month)
+  params.append('vegetable', vegetable)
+  
+  return get(`/price-trend?${params.toString()}`)
+}
+
+/**
+ * Get demand forecast data
+ * @param {string} month - Optional month (YYYY-MM)
+ * @param {string} vegetable - Optional vegetable name
+ */
+export async function getDemandForecast(month = null, vegetable = null) {
+  const params = new URLSearchParams()
+  if (month) params.append('month', month)
+  if (vegetable) params.append('vegetable', vegetable)
+  
+  const queryString = params.toString()
+  return get(`/demand-forecast${queryString ? `?${queryString}` : ''}`)
+}
+
+/**
+ * Get crop recommendation based on soil and weather conditions
+ * @param {object} data - Object with N, P, K, temperature, humidity, ph, rainfall
+ */
+export async function getCropRecommendation(data) {
+  return post('/crop-recommendation', data)
+}
+
